@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: rno-cloud-react
+  messages:
+    basename: i18n/messages
+  profiles:
+    active: dev
+    include: keycloak

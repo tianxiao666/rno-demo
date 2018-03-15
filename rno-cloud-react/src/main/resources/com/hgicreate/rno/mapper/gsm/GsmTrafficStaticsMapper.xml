@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgicreate.rno.mapper.gsm.GsmTrafficStaticsMapper">
+
+    <select id="getCellAudioOrDataDescByConfigIds" parameterType="map" resultType="map">
+        SELECT
+            a.STS_DESC_ID,
+            a.spec_type,
+            a.net_type,
+            TO_CHAR(a.sts_date,'YYYY-MM-DD') AS STS_DATE,
+            TO_CHAR(a.CREATE_TIME,'YYYY-MM-DD HH24:mi:ss') AS CREATE_TIME,
+            a.AREA_ID,
+            a.STS_PERIOD,
+            b.NAME areaname
+        from RNO_GSM_STS_DESCRIPTOR a, RNO_SYS_AREA b
+        WHERE a.AREA_ID=b.ID
+          AND STS_DESC_ID in (${configIds})
+    </select>
+    <select id="getStsSpecFieldInSelConfig" parameterType="map" resultType="map">
+        select distinct(cell),
+        avg(${fieldName}) as avgValue,
+        max(${fieldName}) as maxValue,
+        min(${fieldName}) as minValue,
+        count(${fieldName}) as cnt
+        from RNO_GSM_STS
+        where DESCRIPTOR_ID IN (${buf})
+        group by cell
+    </select>
+    <select id="selectSpecialCellInSelConfig" parameterType="map" resultType="map">
+      ${sql}
+    </select>
+
+</mapper>

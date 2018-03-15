@@ -1,0 +1,21 @@
+package com.hgicreate.rno.repository;
+
+import com.hgicreate.rno.domain.App;
+import com.hgicreate.rno.domain.Menu;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+public interface MenuRepository extends CrudRepository<Menu, Integer> {
+
+    List<Menu> findAllByParentIdIsAndAppIdIsOrderByIndexOfBrother(Long pid, Long appId);
+
+    @Override
+    <S extends Menu> S save(S s);
+
+    void deleteAllByAppId(Long appId);
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgicreate.rno.mapper.gsm.GsmDtAnalysisDataMapper">
+    <select id="getDistinctCell" resultType="map">
+        SELECT DISTINCT CELL_LONGITUDE,CELL_LATITUDE FROM RNO_GSM_DT_SAMPLE
+    </select>
+    <select id="getNcell" resultType="map">
+        SELECT DISTINCT LONGITUDE,LATITUDE
+        FROM RNO_GSM_DT_SAMPLE
+        WHERE CELL_LONGITUDE = #{param1}
+              and CELL_LATITUDE = #{param2}
+    </select>
+    <select id="getCoverageCell" resultType="map">
+        SELECT LONGITUDE,LATITUDE,CELL_LONGITUDE,CELL_LATITUDE
+        FROM RNO_GSM_DT_SAMPLE
+        WHERE CELL_LONGITUDE in (select LONGITUDE from RNO_GSM_DT_SAMPLE where cell = #{param1})
+              and CELL_LATITUDE in (select LATITUDE from RNO_GSM_DT_SAMPLE where cell = #{param1})
+    </select>
+    <select id="getCoverageSample" resultType="map">
+        SELECT DISTINCT LONGITUDE,LATITUDE
+        FROM RNO_GSM_DT_SAMPLE
+        WHERE cell = #{param1}
+    </select>
+</mapper>

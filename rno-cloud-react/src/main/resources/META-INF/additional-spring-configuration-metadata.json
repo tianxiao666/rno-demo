@@ -1,0 +1,54 @@
+{
+  "properties": [
+    {
+      "name": "rno.path.upload-files",
+      "type": "java.lang.String",
+      "description": "上传文件在服务器上保存的路径."
+    },
+    {
+      "name": "rno.scheduler.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否允许定时任务，缺少为false."
+    },
+    {
+      "name": "rno.scheduler.fixed-delay",
+      "type": "java.lang.String",
+      "description": "定时任务的时间间隔，单位是毫秒."
+    },
+    {
+      "name": "rno.scheduler.job-type",
+      "type": "java.lang.String",
+      "description": "任务类型，缺省为NONE."
+    },
+    {
+      "name": "rno.app-code",
+      "type": "java.lang.String",
+      "description": "系统应用的代码，如 rno、rno4g 等."
+    },
+    {
+      "name": "rno.ftp.host",
+      "type": "java.lang.String",
+      "description": "Description for rno.ftp.host."
+    },
+    {
+      "name": "rno.ftp.port",
+      "type": "java.lang.String",
+      "description": "Description for rno.ftp.port."
+    },
+    {
+      "name": "rno.ftp.username",
+      "type": "java.lang.String",
+      "description": "Description for rno.ftp.username."
+    },
+    {
+      "name": "rno.ftp.password",
+      "type": "java.lang.String",
+      "description": "Description for rno.ftp.password."
+    },
+    {
+      "name": "rno.ftp.remote-path",
+      "type": "java.lang.String",
+      "description": "Description for rno.ftp.remote-path."
+    }
+  ]
+}
